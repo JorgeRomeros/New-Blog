@@ -1,14 +1,15 @@
 {% load static %}
 <html>
     <head>
+        <title>Jorge's Blog</title>
         <title>Django Girls blog</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}">-->
         <!-- Css3 -->
-        <link rel="stylesheet" href="{% static 'css/clean-blog.css' %}">
-        <link rel="stylesheet" href="{% static 'css/clean-blog.min.css' %}">
-
+        <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!--<link href="{% static 'css/clean-blog.css' %}" rel="stylesheet">-->
+        <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet" >
         <!-- Fuentes -->
         <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -55,7 +56,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="site-heading">
-                        <h1>Jorge's Blog Django</h1>
+                        <h1>Jorge's Blog</h1>
                         <hr class="small">
                         <span class="subheading">By Django Girls</span>
                     </div>
@@ -63,24 +64,77 @@
             </div>
         </div>
      </header>
-
-
-        <div class="content container">
+        <div class="content container"><!--Div Class content container -->
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-preview">
-                    {% for post in posts %}
-                        <div class="post">
-                            <div class="date">
-                                <p>published: {{ post.published_date }}</p>
-                            </div>
-                            <h1><a href="">{{ post.title }}</a></h1>
-                            <p>{{ post.text|linebreaksbr }}</p>
-                        </div>
-                    {% endfor %}
-                   <div class="post-preview">
+                        {% for post in posts %}
+                                <h2 class="post-title"><a href="">{{ post.title }}</a></h2>
+                                <p class="post-meta">{{ post.text|linebreaksbr }}</p>
+                                <div class="date">
+                                    <p class="post-meta">Publicado: {{ post.published_date }}</p>
+                                </div>
+                                <hr>
+                        {% endfor %}
+                        <ul class="pager">
+                            <li class="next">
+                                <a href="#">Otros Posts &rarr;</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> <!--Div Class content container -->
+
+        <hr>
+        <!-- Footer -->
+           <footer>
+               <div class="container">
+                   <div class="row">
+                       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                           <ul class="list-inline text-center">
+                               <li>
+                                   <a href="#">
+                                       <span class="fa-stack fa-lg">
+                                           <i class="fa fa-circle fa-stack-2x"></i>
+                                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                       </span>
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="#">
+                                       <span class="fa-stack fa-lg">
+                                           <i class="fa fa-circle fa-stack-2x"></i>
+                                           <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                                       </span>
+                                   </a>
+                               </li>
+                               <li>
+                                   <a href="https://github.com/JorgeRomeros/" target="_blank">
+                                       <span class="fa-stack fa-lg">
+                                           <i class="fa fa-circle fa-stack-2x"></i>
+                                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                       </span>
+                                   </a>
+                               </li>
+                           </ul>
+                           <p class="copyright text-muted">Copyright &copy;Jorge's Blog 2019</p>
+                       </div>
+                   </div>
+               </div>
+           </footer>
+           <!-- jQuery -->
+            <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+            <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+            <!-- Contact Form JavaScript -->
+            <script src="{% static 'js/jqBootstrapValidation.js' %}"></script>
+            <script src="{% static 'js/contact_me.js' %}"></script>
+
+            <!-- Theme JavaScript -->
+            <script src="{% static 'js/clean-blog.min.js' %}"></script>
+
     </body>
 </html>
